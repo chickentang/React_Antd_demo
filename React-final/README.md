@@ -1,12 +1,12 @@
 # Todos_React_Redux_Webpack_Babel
-使用React、Redux、Webpack、Babel（ES6）搭建的TODOS（任务列表）项目示例（脚手架），Webpack按development和production环境配置好了有关热更新、postcss、hash命名（缓存方案）、UglifyJs等config。
+使用React、Redux、React-router、Webpack、Babel（ES6）搭建的TODOS（任务列表）项目示例（脚手架），Webpack按development和production环境配置好了有关热更新、postcss、hash命名（缓存方案）、UglifyJs ，同时还有图片字体加载，css处理 等config。
 
 ### INSTALL:
 ```npm install```
 ### DEVELOPMENT:
 ```npm start```
 
-``` open http://localhost:8080/ ```
+``` open http://localhost:8888/ ```
 
 ### PRODUCTION:
 ```npm run build```
