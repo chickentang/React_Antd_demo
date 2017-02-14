@@ -1,0 +1,109 @@
+*, *:before, *:after {
+    box-sizing: inherit;
+    overflow-scrolling:touch;
+    transition:all .3s;
+}
+
+body {
+    margin: 0;
+    background-color:#dcdcb7;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+#app{
+    box-sizing: border-box;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-align:center;
+    font-size:16px;
+    font-family: Arial;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#app input[type=text]{
+    width:50%;
+    display:inline-block;
+    font-size:18px;
+    border-radius:5px;
+    padding:.5em;
+    box-sizing:border-box;
+    border:1px solid #c3c3c3;
+    margin:0 auto 1em;
+}
+#app a{
+    margin:0 2em;
+    display:inline-block;
+    border:1px solid #999;
+    color:#333;
+    text-decoration: none;
+    padding:.3em .7em;
+    border-radius:4px;
+}
+
+
+#app h1{
+    color:#2f6fad;
+    margin:.5em 0;
+}
+
+#app ul{
+    width:50%;
+    display:block;
+    margin:1em auto 1em;
+}
+#app li{
+    border-bottom:1px solid #333;
+    position:relative;
+    text-align:left;
+    padding:1em 0 1em 5.2em;
+    cursor:pointer;
+    word-break:break-all;
+}
+
+#app li .status{
+    position:absolute;
+    top:50%;
+    left:0;
+    transform:translate(0,-50%);
+}
+
+#app input[type=text]:focus,#app li:hover,#app a.active{
+    background:#ddd;
+    color:#fff;
+    border-color:#2f6fad;
+}
+
+#app li input[type=checkbox]{
+    position:absolute;
+    top:50%;
+    left:54px;
+    transform:translate(0,-65%);
+    display:inline-block;
+    font-size:30px;
+}
+#app li.done{
+    text-decoration: line-through;
+}
+
+#app li .delete{
+    position:absolute;
+    right:10px;
+    top:50%;
+    line-height:20px;
+    transform:translate(0,-50%);
+    display:none;
+    transition: all 0s;
+}
+
+#app li:hover .delete{
+    display:block;
+}
+
+#app li:last-child{
+    border-bottom:none;
+}
+#root ul{    width: 100%;}
