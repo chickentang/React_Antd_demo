@@ -15,8 +15,6 @@ import './style/main.css';
 import './style/bootstrap.min.css';
 
 
-
-
 store.subscribe(()=>{
     localStorage.setItem('todos',JSON.stringify(store.getState()));
 });

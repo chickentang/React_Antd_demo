@@ -4,7 +4,7 @@ import NavLink from './NavLink'
 export default React.createClass({
   render() {
     return (
-      <div>
+      <div id="app">
         <ul>
           <li><NavLink to="/repos/reactjs/react-router">React Router</NavLink></li>
           <li><NavLink to="/repos/facebook/react">React</NavLink></li>

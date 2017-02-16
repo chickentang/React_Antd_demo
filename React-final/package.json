@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --progress && echo sddss",
-    "build": "rm -rf ./build/* && webpack --config ./webpack.production.config.js --progress && ls ./build"
+    "build": "webpack --config ./webpack.production.config.js --progress"
   },
   "keywords": [
     "redux",

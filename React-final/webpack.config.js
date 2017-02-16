@@ -7,27 +7,27 @@ module.exports = {
         path: __dirname + "/server",//输出路径
         filename: "bundle.js"//输出名
     },
-    module:{
-      loaders:[
-          {
-              test:/\.js$/,//js loader
-              exclude:/node_modules/,
-              loader:'babel'//更多配置在.babelrc
-          },
-          {
-              test:/\.css$/,//css loader
-              loader:'style!css?!postcss'
-              // loader:'style!css?modules!postcss'//css模块化
-          },
+    module: {
+        loaders: [
+            {
+                test: /\.js$/, //js loader
+                exclude: /node_modules/,
+                loader: 'babel' //更多配置在.babelrc
+            },
+            {
+                test: /\.css$/, //css loader
+                loader: 'style!css?!postcss'
+                    // loader:'style!css?modules!postcss'//css模块化
+            },
             //引用css中的一些字体与图像
-                {
-                    test: /\.(woff|svg|eot|ttf|woff2)\??.*$/,
-                    loader: 'url?limit=2000'
+            {
+                test: /\.(woff|svg|eot|ttf|woff2)\??.*$/,
+                loader: 'url?limit=2000'
             },
             //引用图像
-                {
-                    test: /\.(png|jpg)$/,
-                    loader: 'url?limit=25000'
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url?limit=25000'
             }
       ]
     },

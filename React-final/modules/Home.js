@@ -6,11 +6,15 @@ import { Provider, connect } from 'react-redux';
 // React component
 class Counter extends React.Component {
   render(){
-    const { value, onIncreaseClick } = this.props;
+    const { value, onIncreaseClick,onDecreaseClick ,onMultiplyClick,onDivideClick,onZeroClick} = this.props;
     return (
-      <div>
-        <span>{value}</span>
-        <button onClick={onIncreaseClick}>Increase</button>
+      <div id="app">
+        <span className="increase">当前数字是：{value} </span>
+        <button className="btn btn-success increase-btn" onClick={onIncreaseClick}>加一</button>
+        <button className="btn btn-danger increase-btn" onClick={onDecreaseClick}>减一</button>
+        <button className="btn btn-primary increase-btn" onClick={onMultiplyClick}>乘二</button>
+        <button className="btn btn-info  increase-btn" onClick={onDivideClick}>除二</button>
+        <button className="btn btn-default" onClick={onZeroClick}>归零</button>
       </div>
     );
   }
@@ -18,6 +22,11 @@ class Counter extends React.Component {
 
 // Action:type字段是必需的，其他字段自己随意定义
 const increaseAction = {type: 'increase'};
+const decreaseAction = {type: 'decrease'};
+const multiplyAction = {type: 'multiply'};
+const divideAction = {type: 'divide'};
+const zeroAction = {type: 'zero'};
+
 
 // Reducer:
 function counter(state={count: 0}, action) {
@@ -25,6 +34,14 @@ function counter(state={count: 0}, action) {
   switch(action.type){
     case 'increase':
       return {count: count+1};
+    case 'decrease':
+      return {count: count-1};
+    case 'multiply':
+      return {count: count*2};
+    case 'divide':
+      return {count: count/2};
+    case 'zero':
+      return {count: 0};
     default:
       return state;
   }
@@ -43,7 +60,12 @@ function mapStateToProps(state)  {
 // Map Redux actions to component props
 function mapDispatchToProps(dispatch) {
   return {
-    onIncreaseClick: () => dispatch(increaseAction)
+    onIncreaseClick: () => dispatch(increaseAction),
+    onDecreaseClick: () => dispatch(decreaseAction),
+    onMultiplyClick: () => dispatch(multiplyAction),
+    onDivideClick: () => dispatch(divideAction),
+    onZeroClick: () => dispatch(zeroAction)
+      
   };
 }
 

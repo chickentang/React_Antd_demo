@@ -20,6 +20,16 @@ module.exports = {
             {
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style','css!postcss')
+            },
+            //引用css中的一些字体与图像
+            {
+                test: /\.(woff|svg|eot|ttf|woff2)\??.*$/,
+                loader: 'url?limit=2000'
+            },
+            //引用图像
+            {
+                test: /\.(png|jpg)$/,
+                loader: 'url?limit=25000'
             }
         ]
     },
