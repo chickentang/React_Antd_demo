@@ -1,5 +1,5 @@
 import {createStore} from 'redux';
-import todoApp from '../reducers/search';
+import todoApp from '../reducers';
 
 let cacheTodos  = localStorage.getItem('todos');
 try{
