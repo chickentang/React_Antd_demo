@@ -28,7 +28,7 @@ export default React.createClass({
               </Menu>
             </Header>
             <Layout>
-              <Sider width={200} style={{ background: '#BD2626' }}>
+              <Sider width={200} >
                 <Menu
                   mode="inline"
                     theme="dark"
