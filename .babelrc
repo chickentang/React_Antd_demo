@@ -1,30 +1,7 @@
 {
   "presets":["react","es2015"],
-  "env":{//如果是发布版本就不要这个热部署的配置
+  "env":{
     "development":{
     }
   }
 }
-
-
-/*{
-  "presets":["react","es2015"],
-  "env":{//下面的配置都是为了热更新，如果是开发版本就需要这个配置
-    "development":{
-      "plugins":[
-        [
-          "react-transform",
-          {
-            "transforms":[
-              {
-                "transform":"react-transform-hmr",
-                "imports":["react"],
-                "locals":["module"]
-              }
-            ]
-          }
-        ]
-      ]
-    }
-  }
-}*/
