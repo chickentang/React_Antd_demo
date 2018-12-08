@@ -14,17 +14,10 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
-/* var filesArray = readdir.readSync(path.resolve(__dirname), [`modules/dev/webpack.${dis}.conf.js`])
-console.log('filesArray', filesArray)
-filesArray.forEach(file => {
-  var conf = require(path.resolve(__dirname, file))
-  baseWebpackConfig = merge(baseWebpackConfig, conf)
-}); */
 
 module.exports = merge(baseWebpackConfig, {
-  module: {
-    rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap })
-  },
+
+  mode: 'development',
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
   plugins: [
@@ -35,8 +28,8 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
-      filename: 'index2.html',
-      template: `src/server/index.html`,
+      filename: 'index.html',
+      template: `src/tmpl/index.html`,
       inject: true,
       chunks: ['vendor', 'manifest', 'app']
     }),

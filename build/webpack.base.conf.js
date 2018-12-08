@@ -1,7 +1,10 @@
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
-var eslintFriendlyFormatter = require('eslint-friendly-formatter')
+var eslintFriendlyFormatter = require('eslint-friendly-formatter');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+
+const extractCSS = new ExtractTextPlugin('css/[name].css');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -51,18 +54,12 @@ module.exports = {
       include: [resolve('src'), resolve('test')]
     },
     {
-        type: 'javascript/auto',
-        test: /\.(json|html)/,
-        exclude: /(node_modules|bower_components)/,
-        use: [{
-          loader: 'file-loader',
-          options: { name: '[name].[ext]' },
-        }],
+      test: /\.css$/,
+      use: extractCSS.extract({
+          use: ['css-loader'],
+          fallback: 'style-loader'
+      }),
     },
-   /*  {
-      test: /\.json$/,
-      loader: 'raw-loader'
-    }, */
     {
       test: /\.(png|jpe?g|gif|svg|tif|tiff|bmp)(\?.*)?$/,
       loader: 'url-loader',
@@ -88,5 +85,8 @@ module.exports = {
       }
     },
     ]
-  }
+  },
+  plugins:[
+    extractCSS,
+  ]
 }

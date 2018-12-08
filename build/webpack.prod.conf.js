@@ -6,44 +6,26 @@ var readdir = require('readdir')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
-var env = config.build.env
-var dis = process.argv[2];
-var urls = require('../src/common/urls/index');
-var prefix = "http://res.imtt.qq.com/lab-frontend-project";
+var env = config.build.env;
+
 
 var webpackConfig = merge(baseWebpackConfig, {
-  module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
-      extract: true
-    })
-  },
+
+  mode: 'production',
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js'),
-    publicPath:`${prefix}/`+dis+'/'  //用了DynamicPublicPathPlugin，这里用相对路径修复css里的otf引用
+    filename: '[name]-[hash].js',
   },
-
   plugins: [
-    // http://vuejs.github.io/vue-loader/en/workflow/production.html
+    new webpack.optimize.MinChunkSizePlugin({ 
+      minChunkSize: 10000 // Minimum number of characters
+    }),
+    
     new webpack.DefinePlugin({
       'process.env': env
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      sourceMap: true
-    }),
-
-    // extract css into its own file
-    new ExtractTextPlugin({
-      filename: utils.assetsPath('css/[name].css')
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -58,8 +40,7 @@ var webpackConfig = merge(baseWebpackConfig, {
     // see https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: config.build.index,
-      template: `src/server/index.html`,
-      urls: urls,
+      template: `src/tmpl/index.tmpl.html`,
       inject: true,
       minify: {
         removeComments: true,
@@ -72,31 +53,26 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency',
       chunks: ['vendor', 'manifest', 'app']
     }),
-/*     new WebpackMd5Hash(),
-    new ManifestPlugin(),
-    new ChunkManifestPlugin({
-      filename: "chunk-manifest.json",
-      manifestVariable: "webpackManifest"
-    }), */
-    // split vendor js into its own file
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
-        )
+     // split vendor js into its own file
+    new webpack.optimize.SplitChunksPlugin({
+      chunks: "all",
+      minSize: 30000,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+          vendors: {
+              test: /[\\/]node_modules[\\/]/,
+              priority: -10
+          },
+      default: {
+              minChunks: 2,
+              priority: -20,
+              reuseExistingChunk: true
+          }
       }
-    }),
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
     }),
 
   ]
