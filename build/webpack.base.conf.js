@@ -1,8 +1,8 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('../config')
-var eslintFriendlyFormatter = require('eslint-friendly-formatter');
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const path = require('path')
+const utils = require('./utils')
+const config = require('../config')
+const eslintFriendlyFormatter = require('eslint-friendly-formatter');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin('css/[name].css');
 
@@ -12,7 +12,7 @@ function resolve(dir) {
 
 module.exports = {
   entry: {
-    app: [ `./src/index.js`],
+    app: [ `./src/front/index.js`],
   },
   output: {
     path: config.build.assetsRoot,
