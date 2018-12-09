@@ -26,7 +26,7 @@ module.exports = merge(baseWebpackConfig, {
     new webpack.NoEmitOnErrorsPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: `src/tmpl/index.html`,
+      template: `src/front/tmpl/index.html`,
       inject: true,
       chunks: ['vendor', 'manifest', 'app']
     }),

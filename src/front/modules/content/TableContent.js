@@ -1,5 +1,5 @@
 import React from 'react';
-import action from '../../actions/content';//action中的Index.js是首先加载文件
+import action from 'actions/content';//action中的Index.js是首先加载文件
 import {connect} from 'react-redux';
 import { Table, Icon } from 'antd';
 

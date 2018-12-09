@@ -29,13 +29,13 @@ module.exports = {
     ],
     alias: {
       '@': resolve('src'),
-      'assets': resolve('src/assets'),
-      'actions': resolve('src/actions'),
-      'data': resolve('src/data'),
-      'reducers': resolve('src/reducers'),
-      'server': resolve('src/server'),
-      'modules': resolve('src/modules'),
-      'store': resolve('src/store'),
+      'assets': resolve('src/front/assets'),
+      'actions': resolve('src/front/actions'),
+      'data': resolve('src/front/data'),
+      'reducers': resolve('src/front/reducers'),
+      'tmpl': resolve('src/front/tmpl'),
+      'modules': resolve('src/front/modules'),
+      'store': resolve('src/front/store'),
     }
   },
   module: {
