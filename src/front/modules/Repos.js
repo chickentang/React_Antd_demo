@@ -1,7 +1,7 @@
 import React from 'react'
 import NavLink from './NavLink'
 
-export default React.createClass({
+export default class Repos extends React.Component{
   
   render() {
     let isMouseEnter = () => {return this.lidom.className = "";}
@@ -23,5 +23,5 @@ export default React.createClass({
       </div>
     )
   }
-})
+}
 

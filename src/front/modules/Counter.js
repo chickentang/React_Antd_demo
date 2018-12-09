@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 
 // 单页面精简组件--记数器
-class Counter extends React.Component {
+class Counter1 extends React.Component {
   render(){
     const { value, onIncreaseClick,onDecreaseClick ,onMultiplyClick,onDivideClick,onZeroClick} = this.props;
     return (
@@ -72,11 +72,11 @@ function mapDispatchToProps(dispatch) {
 let App = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Counter);
+)(Counter1);
 //表示这个js文件默认导出的是该类
-export default React.createClass({
+export default class Counter  extends React.Component {
     render(){
        return <Provider store={store}><App /></Provider>
       }
-})
+}
 
