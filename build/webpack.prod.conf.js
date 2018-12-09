@@ -1,15 +1,11 @@
-var path = require('path')
-var utils = require('./utils')
 var webpack = require('webpack')
 var config = require('../config')
-var readdir = require('readdir')
 var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = config.build.env;
-
 
 var webpackConfig = merge(baseWebpackConfig, {
 
