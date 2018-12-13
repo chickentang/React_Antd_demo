@@ -53,7 +53,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
      // split vendor js into its own file
     new webpack.optimize.SplitChunksPlugin({
-      chunks: "all",
+      chunks: "async",//这里写All就不行，async 就可以~~~，不懂
       minSize: 30000,
       minChunks: 1,
       maxAsyncRequests: 5,
