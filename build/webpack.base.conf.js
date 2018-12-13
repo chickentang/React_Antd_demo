@@ -1,10 +1,11 @@
 const path = require('path')
 const utils = require('./utils')
 const config = require('../config')
-const eslintFriendlyFormatter = require('eslint-friendly-formatter');
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const extractCSS = new ExtractTextPlugin('css/[name].css');
+
+const rootPath = path.resolve(__dirname, '..')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
@@ -22,7 +23,7 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.css', '.json'],
+    extensions: ['.js', '.css', '.json', '.jsx'],
     modules: [
       resolve('src'),
       resolve('node_modules')
@@ -39,19 +40,17 @@ module.exports = {
     }
   },
   module: {
-    rules: [{
-      test: /\.(js|vue)$/,
-      loader: 'eslint-loader',
-      enforce: "pre",
-      include: [resolve('src'), resolve('test')],
-      options: {
-        formatter: eslintFriendlyFormatter
-      }
-    },
+    rules: [
     {
-      test: /\.js$/,
-      loader: 'babel-loader',
-      include: [resolve('src'), resolve('test')]
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react', 'stage-0'],
+          }
+        },
+        include: path.join(rootPath, 'src'),
     },
     {
       test: /\.css$/,
