@@ -41,7 +41,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        collapseInlineTagWhitespace: true,
+        removeAttributeQuotes: false,
+        removeRedundantAttributes: true
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
@@ -51,7 +53,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
      // split vendor js into its own file
     new webpack.optimize.SplitChunksPlugin({
-      chunks: "all",
+      chunks: "async",//这里写All就不行，async 就可以~~~，不懂
       minSize: 30000,
       minChunks: 1,
       maxAsyncRequests: 5,

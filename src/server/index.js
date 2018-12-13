@@ -1,13 +1,12 @@
 const Koa = require('koa');
 const path = require('path');
-const koaStatic = require('koa-static');
-const MyRouter = require('./router/index.js');
-
 const app = new Koa();
 
-app.use(koaStatic( path.join( __dirname,  "../../dist") ))
+const static = require('koa-static')
 
-app.use(MyRouter.routes()).use(MyRouter.allowedMethods());
-
-app.listen(3000)
-console.log('server is starting at port 3000')
+app.use(static(
+  path.join( __dirname,  "../../dist/")
+))
+app.listen(9000, () => {
+    console.log('server is starting at port 9000')
+  })
