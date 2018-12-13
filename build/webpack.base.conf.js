@@ -1,14 +1,18 @@
 const path = require('path')
-const utils = require('./utils')
 const config = require('../config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-
 const extractCSS = new ExtractTextPlugin('css/[name].css');
-
 const rootPath = path.resolve(__dirname, '..')
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
+}
+
+function assetsPath(_path) {
+  const assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+      config.build.assetsSubDirectory :
+      config.dev.assetsSubDirectory
+  return path.posix.join(assetsSubDirectory, _path)
 }
 
 module.exports = {
@@ -64,7 +68,7 @@ module.exports = {
       loader: 'url-loader',
       query: {
         limit: 10000,
-        name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        name: assetsPath('img/[name].[hash:7].[ext]')
       }
     },
     {
@@ -72,7 +76,7 @@ module.exports = {
       loader: 'url-loader',
       query: {
         limit: 10000,
-        name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
+        name: assetsPath('fonts/[name].[hash:7].[ext]')
       }
     },
     {
@@ -80,7 +84,7 @@ module.exports = {
       loader: 'url-loader',
       options: {
         limit: 10000,
-        name: utils.assetsPath('media/[name].[hash:7].[ext]')
+        name: assetsPath('media/[name].[hash:7].[ext]')
       }
     },
     ]
