@@ -12,9 +12,7 @@ export default class App extends React.Component {
         return(
           <Layout>
             <Header className="header">
-              <div className="logo" >
-                    <img src={require("assets/images/logo.png")} alt="" width="112" height="35" />
-              </div>
+              <div className="logo" ></div>
               <Menu
                 theme="dark"
                 mode="horizontal"

@@ -1,5 +1,5 @@
 const path = require('path')
-const config = require('../config')
+const config = require('./config')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractCSS = new ExtractTextPlugin('css/[name].css');
 const rootPath = path.resolve(__dirname, '..')

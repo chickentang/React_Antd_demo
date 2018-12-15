@@ -2,7 +2,9 @@ let path = require("path");
 
 module.exports = {
   build: {
-    env: require("./prod.env"),
+    env: {
+      NODE_ENV: '"production"'
+    },
     index: path.resolve(__dirname, `../dist/index.html`),
     assetsRoot: path.resolve(__dirname, `../dist`),
     assetsSubDirectory: "",
@@ -22,7 +24,9 @@ module.exports = {
     //manifestFileName: 'manifest-doctor.json'
   },
   dev: {
-    env: require("./dev.env"),
+    env: {
+      NODE_ENV: '"development"'
+    },
     port: 8888,
     assetsSubDirectory: "static",
     assetsPublicPath: "/",

@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const config = require('../config')
+const config = require('./config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -13,7 +13,6 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
 
 
 module.exports = merge(baseWebpackConfig, {
-
   mode: 'development',
   // cheap-module-eval-source-map is faster for development
   devtool: '#cheap-module-eval-source-map',
