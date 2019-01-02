@@ -19,3 +19,7 @@
 * ES6 for React：<http://egorsmirnov.me/2015/05/22/react-and-es6-part1.html>
 
 * Webpack for React：<http://www.pro-react.com/materials/appendixA/>
+
+### 更新日志
+
+2018-12-12 打包切换成webpack 4.0
