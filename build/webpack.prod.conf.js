@@ -1,5 +1,5 @@
 const webpack = require('webpack')
-const config = require('../config')
+const config = require('./config')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -8,7 +8,6 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const env = config.build.env;
 
 const webpackConfig = merge(baseWebpackConfig, {
-
   mode: 'production',
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
@@ -54,12 +53,12 @@ const webpackConfig = merge(baseWebpackConfig, {
      // split vendor js into its own file
     new webpack.optimize.SplitChunksPlugin({
       chunks: "async",//这里写All就不行，async 就可以~~~，不懂
-      minSize: 30000,
+      minSize: 500,
       minChunks: 1,
       maxAsyncRequests: 5,
       maxInitialRequests: 3,
       automaticNameDelimiter: '~',
-      name: true,
+      name: false,
       cacheGroups: {
           vendors: {
               test: /[\\/]node_modules[\\/]/,

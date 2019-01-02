@@ -10,7 +10,7 @@ import Home from 'modules/content';
 import Counter from 'modules/Counter.js';
 
 import 'assets/style/main.css';
-import 'assets/style/bootstrap.min.css';
+// import 'assets/style/bootstrap.min.css';
 import 'assets/style/antd.css';
 
 

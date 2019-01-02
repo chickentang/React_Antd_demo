@@ -6,15 +6,13 @@ const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 
-export default React.createClass({
+export default class App extends React.Component {
     
     render(){
         return(
           <Layout>
             <Header className="header">
-              <div className="logo" >
-                    <img src={require("assets/images/logo.png")} alt="" width="112" height="35" />
-              </div>
+              <div className="logo" ></div>
               <Menu
                 theme="dark"
                 mode="horizontal"
@@ -66,4 +64,4 @@ export default React.createClass({
             </Layout>
           </Layout>
         )}
-   });
+   }
